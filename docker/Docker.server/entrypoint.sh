@@ -15,10 +15,6 @@ function mockdata {
     :
 }
 
-function assets {
-    :
-}
-
 function prepare {
     :
 }
