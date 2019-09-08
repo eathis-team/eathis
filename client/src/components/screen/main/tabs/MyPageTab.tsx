@@ -1,28 +1,30 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, FunctionComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Icon } from 'native-base';
+import { Button } from 'native-base';
 
-class MyPageTab extends Component {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name='md-person' style={{ color: tintColor }} />
-    )
-  }
-  
-  render() {
-    return (
-      <View style={style.container}>
-        <Text>MyPageTab</Text>
-      </View>
-    );
-  }
+interface Props {
+  navigation: any;
+}
+
+const MyPageTab: FunctionComponent<Props> = ({ navigation }) => {
+  const { navigate } = navigation;
+  return (
+    <View style={style.container}>
+      <Text>MyPageTab</Text>
+      <Button onPress={() => navigate('Sign', {})}>
+        <Text>
+          로그인
+        </Text>
+      </Button>
+    </View>
+  );
 }
 
 const style = StyleSheet.create({
   container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
 

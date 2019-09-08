@@ -2,8 +2,8 @@
   "devToolsPort": 19002,
   "expoServerPort": 19000,
   "packagerPort": 19001,
-  "packagerPid": 607,
-  "expoServerNgrokUrl": "https://vx-bkm.anonymous.client.exp.direct",
-  "packagerNgrokUrl": "https://packager.vx-bkm.anonymous.client.exp.direct",
-  "ngrokPid": 635
+  "packagerPid": 1072,
+  "expoServerNgrokUrl": "https://mn-3ac.chaehunim.client.exp.direct",
+  "packagerNgrokUrl": "https://packager.mn-3ac.chaehunim.client.exp.direct",
+  "ngrokPid": 1098
 }

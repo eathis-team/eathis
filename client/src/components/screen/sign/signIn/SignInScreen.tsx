@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, NativeSyntheticEvent, TextInputChangeEventData } from 'react-native';
 import { Container, Button, Text, Form, Item, Input, View, Icon, Content } from 'native-base';
+import BottomFullButton from '../../../button/BottomFullButton';
 
 interface Props {
   navigation: any
@@ -11,18 +12,12 @@ interface State {
   userPw: string
 }
 
-export default class LoginScreen extends Component<Props> {
+export default class SignInScreen extends Component<Props> {
   state: State = {
     userId: '' || null,
     userPw: '' || null
   }
-
-  static navigationOptions = ({ navigation }) => {
-    return {
-      title: '로그인'
-    }
-  }
-
+  
   //  TODO: Login Process
   _loginProcess = () => {
     const url = 'http://192.168.0.17:9999/test';
@@ -87,10 +82,8 @@ export default class LoginScreen extends Component<Props> {
             </View>
           </View>
         </Content>
-
-        <Button full dark style={{height: '10%'}} onPress={this._loginProcess}>
-          <Text style={{fontSize: 20}}>로그인하기</Text>
-        </Button>
+        
+        <BottomFullButton name='로그인하기' addPressEvent={this._loginProcess} />
       </View>
     )
   }

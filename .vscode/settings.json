@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/tj/anaconda3/envs/eathis/bin/python"
+    "python.pythonPath": "/home/tj/anaconda3/envs/eathis/bin/python",
+    "editor.fontFamily": "Monaco, Menlo, 'Courier New', monospace"
 }

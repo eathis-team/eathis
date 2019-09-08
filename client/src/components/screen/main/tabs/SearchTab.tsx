@@ -1,28 +1,23 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState, useEffect, FunctionComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { Icon } from 'native-base';
 
-class SearchTab extends Component {
-  static navigationOptions = {
-    tabBarIcon: ({ tintColor }) => (
-      <Icon name='ios-search' style={{ color: tintColor }} />
-    )
-  }
-  
-  render() {
-    return (
-      <View style={style.container}>
-        <Text>SearchTab</Text>
-      </View>
-    );
-  }
+interface Props {
+  navigation: any;
+}
+
+const SearchTab: FunctionComponent<Props> = ({ navigation }) => {
+  return (
+    <View style={style.container}>
+      <Text>SearchTab</Text>
+    </View>
+  );
 }
 
 const style = StyleSheet.create({
   container: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   }
 });
 

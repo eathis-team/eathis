@@ -1,22 +1,55 @@
-import { createStackNavigator, createAppContainer } from 'react-navigation';
-import MainScreen from './src/components/screen/main/MainScreen';
-import IntroScreen from './src/components/screen/intro/IntroScreen';
-import LoginScreen from './src/components/screen/login/LoginScreen';
-import SignUpScreen from './src/components/screen/signup/SignUpScreen';
+import React from 'react';
+import { createStackNavigator, createNavigationContainer } from 'react-navigation';
+import { Provider } from 'react-redux';
+import { Icon } from 'native-base';
+import { createStore } from 'redux';
+import reducers from './src/reducers/';
+import TermsModal from './src/components/screen/sign/modals/TermsModal';
+import {
+  SignStackNavigator, IntroStackNavigator, MainTapNavigator
+} from './src/components/screen';
 
-const AppStackNavigator = createStackNavigator({
-  // Intro: {
-  //   screen: IntroScreen
-  // },
-  Login: {
-    screen: LoginScreen
-  },
-  SignUp: {
-    screen: SignUpScreen
-  },
-  Main: {
-    screen: MainScreen // MainScreen 컴포넌트를 네비게이터에 등록
+const ModalStackNavigator = createStackNavigator({
+  TermsModal: {
+    screen: TermsModal,
+    navigationOptions: ({ navigation }) => ({
+      title: '이용약관',
+      headerRight: <Icon name='ios-close' style={{ paddingRight: 15 }} onPress={() => navigation.goBack(null)} />,
+      headerMode: 'screen'
+    })
   }
+}, {
+  mode: 'modal',
+  headerMode: 'screen'
 });
 
-export default createAppContainer(AppStackNavigator);
+const AppStackNavigator = createStackNavigator(
+  {
+    Main: MainTapNavigator
+  }
+)
+
+const RootStackNavigator = createStackNavigator(
+  {
+    Main: AppStackNavigator,
+    Intro: IntroStackNavigator,
+    Sign: SignStackNavigator,
+    Modal: ModalStackNavigator
+  }, {
+    mode: 'modal',
+    headerMode: 'none'
+  }
+)
+
+const NavigationContainer = createNavigationContainer(RootStackNavigator);
+
+const store = createStore(reducers);
+const App = () => {
+  return (
+    <Provider store={store}>
+      <NavigationContainer />
+    </Provider>
+  );
+}
+
+export default App;
